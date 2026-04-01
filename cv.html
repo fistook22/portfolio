@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shai Amir — CV</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0f2340;
+    --accent: #1a6bfa;
+    --accent-light: #e8f0fe;
+    --text: #1a1a2e;
+    --muted: #5a6380;
+    --border: #dde3f0;
+    --bg: #ffffff;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f0f3f9;
+    color: var(--text);
+    font-size: 9.5pt;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    max-height: 297mm;
+    margin: 0 auto;
+    background: var(--bg);
+    display: grid;
+    grid-template-columns: 62mm 1fr;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    grid-column: 1 / -1;
+    background: var(--navy);
+    padding: 18px 22px 14px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .header-left h1 {
+    font-size: 22pt;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  .header-left .tagline {
+    font-size: 9pt;
+    font-weight: 400;
+    color: #8aacf5;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .header-right {
+    text-align: right;
+    font-size: 8pt;
+    color: #8aacf5;
+    line-height: 1.7;
+  }
+
+  .header-right a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .portfolio-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 7.5pt;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 10px;
+    letter-spacing: 0.3px;
+    margin-top: 4px;
+    text-decoration: none;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    background: #f7f9ff;
+    border-right: 1px solid var(--border);
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-title {
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1.5px solid var(--accent-light);
+    padding-bottom: 3px;
+    margin-bottom: 7px;
+  }
+
+  /* ── ABOUT ── */
+  .about-text {
+    font-size: 8.5pt;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  .about-text strong {
+    color: var(--navy);
+  }
+
+  /* ── WHY THIS ROLE ── */
+  .why-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .why-list li {
+    font-size: 8.2pt;
+    padding-left: 14px;
+    position: relative;
+    color: var(--text);
+    line-height: 1.45;
+  }
+
+  .why-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── AI PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 12px;
+  }
+
+  .project-item {
+    font-size: 8pt;
+    line-height: 1.4;
+  }
+
+  .project-item .proj-name {
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .project-item .proj-desc {
+    color: var(--muted);
+  }
+
+  .proj-label {
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+    margin-top: 2px;
+  }
+
+  /* ── EXPERIENCE ── */
+  .job {
+    margin-bottom: 8px;
+  }
+
+  .job:last-child { margin-bottom: 0; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .job-title {
+    font-size: 8.8pt;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .job-date {
+    font-size: 7.5pt;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .job-company {
+    font-size: 7.8pt;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .job-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px;
+  }
+
+  .job-bullets li {
+    font-size: 7.8pt;
+    padding-left: 10px;
+    position: relative;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .job-bullets li::before {
+    content: '·';
+    position: absolute;
+    left: 2px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ── SIDEBAR SECTIONS ── */
+  .contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .contact-list li {
+    font-size: 7.8pt;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .contact-list li a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .contact-icon {
+    width: 14px;
+    height: 14px;
+    background: var(--accent-light);
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7pt;
+    flex-shrink: 0;
+  }
+
+  /* ── SKILLS ── */
+  .skill-group {
+    margin-bottom: 8px;
+  }
+
+  .skill-group-title {
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+
+  .skill-tag {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 7pt;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .skill-tag.dark {
+    background: #eef0f7;
+    color: var(--navy);
+  }
+
+  /* ── EDUCATION ── */
+  .edu-item {
+    margin-bottom: 6px;
+  }
+
+  .edu-item:last-child { margin-bottom: 0; }
+
+  .edu-degree {
+    font-size: 7.8pt;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  .edu-school {
+    font-size: 7.2pt;
+    color: var(--muted);
+  }
+
+  /* ── LANGUAGES ── */
+  .lang-list {
+    font-size: 7.8pt;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .lang-list span {
+    color: var(--muted);
+    font-size: 7.2pt;
+  }
+
+  /* ── MILITARY ── */
+  .military-text {
+    font-size: 7.5pt;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .military-text strong {
+    color: var(--navy);
+    font-size: 7.8pt;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .page {
+      box-shadow: none;
+      width: 210mm;
+      min-height: 297mm;
+    }
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  }
+
+  @media screen {
+    body { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Shai Amir</h1>
+      <div class="tagline">AI Transformation Leader &nbsp;·&nbsp; Product &nbsp;·&nbsp; Tech-Native Operator</div>
+    </div>
+    <div class="header-right">
+      shaiamir22@gmail.com<br>
+      +972-54-4221720<br>
+      Tel Aviv, Israel<br>
+      <a href="https://linkedin.com/in/shaiamir" target="_blank">LinkedIn</a><br>
+      <a class="portfolio-badge" href="#" target="_blank">→ shai.pm — Live Portfolio</a>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div>
+      <div class="section-title">Skills</div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">AI & LLM</div>
+        <div class="skill-tags">
+          <span class="skill-tag">LLM Products</span>
+          <span class="skill-tag">Prompt Eng.</span>
+          <span class="skill-tag">RAG</span>
+          <span class="skill-tag">MCPs</span>
+          <span class="skill-tag">Agent Architecture</span>
+          <span class="skill-tag">Evals</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Technical</div>
+        <div class="skill-tags">
+          <span class="skill-tag dark">Python</span>
+          <span class="skill-tag dark">JavaScript</span>
+          <span class="skill-tag dark">SQL</span>
+          <span class="skill-tag dark">REST APIs</span>
+          <span class="skill-tag dark">Pandas</span>
+          <span class="skill-tag dark">Selenium</span>
+          <span class="skill-tag dark">Bash</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Product & Ops</div>
+        <div class="skill-tags">
+          <span class="skill-tag dark">PRDs</span>
+          <span class="skill-tag dark">Roadmapping</span>
+          <span class="skill-tag dark">RICE / LNO</span>
+          <span class="skill-tag dark">OKRs</span>
+          <span class="skill-tag dark">Stakeholder Mgmt</span>
+          <span class="skill-tag dark">Process Design</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title">Education</div>
+
+      <div class="edu-item">
+        <div class="edu-degree">AI Product Leader Diploma</div>
+        <div class="edu-school">Product Experts · Dec 2025 – Mar 2026</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-degree">Product Management Program</div>
+        <div class="edu-school">Product Experts · 2023</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-degree">Full Stack Web Dev</div>
+        <div class="edu-school">Developers Institute · 2021–2022<br>Python, JavaScript</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title">Languages</div>
+      <div class="lang-list">
+        Hebrew <span>(Native)</span><br>
+        English <span>(Full Professional)</span><br>
+        Spanish <span>(Fluent)</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title">Military</div>
+      <div class="military-text">
+        <strong>Platoon Commander</strong><br>
+        Sayeret Nahal, Nahal Brigade<br>
+        IDF · 2010–2013
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- ABOUT -->
+    <div>
+      <div class="section-title">About</div>
+      <div class="about-text">
+        I'm the kind of person AP Partners brings in when a company is ready to stop being analog.
+        I've built AI products from zero inside an <strong>8,400-store global operation</strong> — and I've also
+        run a restaurant from scratch in Ecuador. I understand business at both scales:
+        the spreadsheet and the system, the floor and the boardroom.
+        <br><br>
+        What makes me different: <strong>I don't just spec AI features — I build them.</strong>
+        I know what it looks like when a process breaks at 2am, and I design systems that don't.
+        At Zoglowek, I'd build the bridge between what the operation is today and
+        what AI can make it — fast, measurably, with the people already in the building.
+      </div>
+    </div>
+
+    <!-- WHY THIS ROLE -->
+    <div>
+      <div class="section-title">Why This Role</div>
+      <ul class="why-list">
+        <li>Map every manual process → find the 20% causing 80% of friction, then eliminate it</li>
+        <li>Build AI tools that workers actually use — not demos that live in a deck</li>
+        <li>Create a product feedback loop with real users on the floor, not just stakeholders in HQ</li>
+      </ul>
+    </div>
+
+    <!-- AI PROJECTS -->
+    <div>
+      <div class="section-title">AI Projects & Initiatives</div>
+
+      <div class="proj-label">Professional</div>
+      <div class="projects-grid">
+        <div class="project-item">
+          <span class="proj-name">Analytics Agent</span><br>
+          <span class="proj-desc">PRD → CEO demo in 10 days. Natural language queries over live operational data, 4 markets expanding to 40+. Designed eval framework & persona system.</span>
+        </div>
+        <div class="project-item">
+          <span class="proj-name">Data-Driven Deprioritization</span><br>
+          <span class="proj-desc">Analyzed 22,000+ deliveries across 264 stores → proved negative ROI → saved $5–10K in dev spend. Roadmap changed on data alone.</span>
+        </div>
+        <div class="project-item">
+          <span class="proj-name">Workflow Automation</span><br>
+          <span class="proj-desc">Replaced manual PM tasks (reporting, synthesis, stakeholder comms) with LLM-powered automation pipelines — reclaimed hours weekly.</span>
+        </div>
+        <div class="project-item">
+          <span class="proj-name">Support AI Agent (mentoring)</span><br>
+          <span class="proj-desc">Mentoring a cross-department colleague through building their own AI agent — extending AI product thinking beyond the product team.</span>
+        </div>
+      </div>
+
+      <div class="proj-label" style="margin-top:6px;">Independent</div>
+      <div class="projects-grid">
+        <div class="project-item">
+          <span class="proj-name">Personal AI Copilot</span><br>
+          <span class="proj-desc">Built and run a personal AI operating system — memory, context, LLM tooling — used daily. Not a side project; it's my workflow.</span>
+        </div>
+        <div class="project-item">
+          <span class="proj-name">Parking Management App</span><br>
+          <span class="proj-desc">Spotted a real operational problem, designed and built a working solution end-to-end — no engineering support.</span>
+        </div>
+        <div class="project-item">
+          <span class="proj-name">DRAM Web App</span><br>
+          <span class="proj-desc">Whisky tasting app with data visualization. Built independently: Python, JavaScript, SQL.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div>
+      <div class="section-title">Experience</div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Product Manager</span>
+          <span class="job-date">2023 – Present</span>
+        </div>
+        <div class="job-company">Byte Kitchen & Fleet (Dragontail Systems) · Yum! Brands &nbsp;—&nbsp; 8,400+ stores, 40+ markets</div>
+        <ul class="job-bullets">
+          <li>Exceeded rollout target by 10%, launching Dragontail Algo in 56 KFC-US stores; secured approval for 2,000-store expansion.</li>
+          <li>Reduced support tickets ~20% through optimized tooling — cut engineering load and improved operational efficiency.</li>
+          <li>Led beta program (20–50 users); resolved critical usability issues; increased CSAT by 10%.</li>
+          <li>UI redesign cut onboarding time from 5 days → 2 days.</li>
+          <li>Built PM processes from zero: RICE/LNO prioritization, Jira standards, request playbook. Coordinated 15+ stakeholders across R&D, CS, Engineering, and exec layer.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Production Manager</span>
+          <span class="job-date">2020 – 2022</span>
+        </div>
+        <div class="job-company">The Milk & Honey Distillery · Israel's first whisky distillery</div>
+        <ul class="job-bullets">
+          <li>Led production team and supplier relations; implemented Monday.com as the first structured ops tool in the production environment.</li>
+          <li>Defined specs for new bottling machine to increase capacity and meet growing demand.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Business Owner</span>
+          <span class="job-date">2016 – 2018</span>
+        </div>
+        <div class="job-company">Casa Fistook · Shakshuka Bar & Restaurant, Montanita, Ecuador</div>
+        <ul class="job-bullets">
+          <li>Founded and operated a restaurant from scratch — ops, marketing, supplier negotiation, customer experience. Awarded Diploma of Honor by the Israeli Ministry of Foreign Affairs.</li>
+        </ul>
+      </div>
+
+    </div><!-- /experience -->
+
+  </div><!-- /main -->
+
+</div><!-- /page -->
+</body>
+</html>

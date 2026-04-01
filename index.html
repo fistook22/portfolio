@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shai Amir — Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0a1628;
+    --navy2: #0f2340;
+    --accent: #1a6bfa;
+    --accent2: #3d8bff;
+    --green: #00c896;
+    --gold: #f5a623;
+    --purple: #8b5cf6;
+    --text: #e8edf8;
+    --muted: #7a8caa;
+    --card-bg: #121f35;
+    --card-border: #1e3054;
+    --tag-bg: #1a3060;
+    --tag-color: #5a9fff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10, 22, 40, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-logo span { color: var(--accent2); }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #fff; text-decoration: none; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 120px 10% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(26,107,250,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,200,150,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px; height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.05;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--accent2), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--muted);
+    max-width: 540px;
+    margin: 20px 0 36px;
+    line-height: 1.7;
+  }
+
+  .hero-sub strong { color: var(--text); font-weight: 600; }
+
+  .hero-cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent2);
+    transform: translateY(-1px);
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--card-border);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent2);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--card-bg);
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    padding: 28px 10%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .stat-number span { color: var(--accent2); }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 10%; }
+
+  .section-header { margin-bottom: 44px; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    width: 20px; height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+  }
+
+  .section-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.8px;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 500px;
+    margin-top: 10px;
+    line-height: 1.7;
+  }
+
+  /* ── PROJECT CARDS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 48px rgba(26,107,250,0.2);
+  }
+
+  .project-card.featured {
+    grid-column: span 2;
+  }
+
+  /* ── CARD PREVIEW ── */
+  .card-preview {
+    width: 100%;
+    height: 210px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .project-card.featured .card-preview { height: 280px; }
+
+  .card-preview iframe {
+    width: 150%;
+    height: 150%;
+    border: none;
+    transform: scale(0.667);
+    transform-origin: top left;
+    pointer-events: none;
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  .card-preview-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(18,31,53,0.95) 100%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 14px;
+  }
+
+  /* Fallback when iframe is blocked */
+  .card-preview-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+  }
+
+  .fallback-icon { font-size: 48px; line-height: 1; }
+  .fallback-label { font-size: 13px; font-weight: 600; }
+
+  /* Color themes per project */
+  .theme-blue   { background: linear-gradient(135deg, #0d1f3c 0%, #1a3a7c 100%); }
+  .theme-green  { background: linear-gradient(135deg, #0a2010 0%, #0f4020 100%); }
+  .theme-purple { background: linear-gradient(135deg, #1a0a3c 0%, #3d1c7c 100%); }
+  .theme-red    { background: linear-gradient(135deg, #3c0a0a 0%, #6b1010 100%); }
+  .theme-teal   { background: linear-gradient(135deg, #0a2428 0%, #0f4048 100%); }
+
+  .card-badge {
+    position: absolute;
+    top: 12px; right: 12px;
+    background: rgba(10, 22, 40, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--card-border);
+    color: var(--accent2);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    z-index: 3;
+  }
+
+  .card-badge.green { color: var(--green); border-color: rgba(0,200,150,0.3); }
+  .card-badge.gold  { color: var(--gold);  border-color: rgba(245,166,35,0.3); }
+  .card-badge.purple { color: #c4b5fd; border-color: rgba(139,92,246,0.4); }
+
+  /* ── CARD BODY ── */
+  .card-body {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .card-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+    flex: 1;
+  }
+
+  .card-impact {
+    background: rgba(26,107,250,0.08);
+    border-left: 3px solid var(--accent);
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    flex: 1;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-color);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 4px;
+  }
+
+  .live-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .live-btn:hover {
+    border-color: var(--accent2);
+    color: var(--accent2);
+    background: rgba(26,107,250,0.08);
+    text-decoration: none;
+  }
+
+  .live-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ── ABOUT SECTION ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .about-text p { margin-bottom: 14px; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { color: var(--text); font-weight: 600; }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 20px;
+    position: relative;
+  }
+
+  .timeline-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 32px;
+    bottom: 0;
+    width: 1px;
+    background: var(--card-border);
+  }
+
+  .timeline-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .timeline-role {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .timeline-company {
+    font-size: 12px;
+    color: var(--accent2);
+    font-weight: 500;
+    margin: 2px 0 4px;
+  }
+
+  .timeline-date {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ── SKILLS ── */
+  .skills-section { background: var(--card-bg); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .skill-card {
+    background: var(--navy);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .skill-card-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 12px;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-pill {
+    background: rgba(26,107,250,0.1);
+    border: 1px solid rgba(26,107,250,0.2);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    text-align: center;
+    background: linear-gradient(135deg, var(--navy2) 0%, #0d1a30 100%);
+    border-top: 1px solid var(--card-border);
+    padding: 80px 10%;
+  }
+
+  .contact-section h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .contact-section p {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid var(--card-border);
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .project-card.featured { grid-column: span 2; }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 14px 20px; }
+    .hero { padding: 100px 6% 60px; }
+    section { padding: 60px 6%; }
+    .project-card.featured { grid-column: span 1; }
+    .about-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .stats-strip { padding: 24px 6%; }
+    .contact-section { padding: 60px 6%; }
+    footer { padding: 20px 6%; flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 36px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Shai<span>.</span>Amir</div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="shai_amir_cv_zoglowek.html" class="btn btn-primary" style="font-size:13px;padding:9px 18px;">↓ CV</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">AI Transformation Leader</div>
+  <h1>Building the bridge<br>from <span>analog to AI.</span></h1>
+  <p class="hero-sub">
+    I've built AI products inside an <strong>8,400-store global operation</strong>
+    and run a restaurant from scratch in Ecuador.
+    I understand business at both scales — and I know how to make AI
+    <strong>actually land</strong> in organizations that haven't fully adopted it yet.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">→ See the work</a>
+    <a href="shai_amir_cv_zoglowek.html" class="btn btn-ghost">View CV</a>
+    <a href="mailto:shaiamir22@gmail.com" class="btn btn-ghost">shaiamir22@gmail.com</a>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat">
+    <div class="stat-number">8,400<span>+</span></div>
+    <div class="stat-label">Stores across 40+ markets</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">10</div>
+    <div class="stat-label">Days: PRD → CEO demo</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">22K<span>+</span></div>
+    <div class="stat-label">Deliveries analyzed for one decision</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">20<span>%</span></div>
+    <div class="stat-label">Support ticket reduction</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">5</div>
+    <div class="stat-label">Independent products shipped</div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <div class="section-eyebrow">Selected Work</div>
+    <div class="section-title">Products & Projects</div>
+    <p class="section-desc">All real. All shipped. Mix of enterprise AI and independent builds.</p>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- 1. Dragon Dome — FEATURED -->
+    <div class="project-card featured">
+      <div class="card-preview">
+        <div class="card-preview-fallback theme-blue">
+          <div class="fallback-icon">🐉</div>
+          <div class="fallback-label" style="color:#8ab4f8;">Dragon Dome — AI Analytics</div>
+          <div style="font-size:11px;color:#5a7ab8;margin-top:4px;">Live at ai-dev.dragontail.com</div>
+        </div>
+        <div class="card-badge">Professional · Yum! Brands</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Dragon Dome — AI Analytics Agent</div>
+        <div class="card-desc">
+          Natural language queries over live operational data across 4 markets (expanding to 40+).
+          Ask it "Compare Canada and UK KPIs" and it goes to work. Built the full product:
+          PRD, eval framework, persona system, and benchmark suite — then demo'd to the CEO.
+        </div>
+        <div class="card-impact">⚡ PRD → CEO demo in 10 days. Replacing hours of manual SQL with a single chat interface across 8,400+ stores.</div>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">LLM</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Evals</span>
+            <span class="tag">Python</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">PRD</span>
+          </div>
+          <a href="https://ai-dev.dragontail.com/" target="_blank" class="live-btn">
+            <span class="live-dot"></span> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. STG Visualizer -->
+    <div class="project-card">
+      <div class="card-preview">
+        <div class="card-preview-fallback theme-purple">
+          <div class="fallback-icon">📈</div>
+          <div class="fallback-label" style="color:#c4b5fd;">STG Visualizer</div>
+          <div style="font-size:11px;color:#7c6ab8;margin-top:4px;">Sale Type Grades over time</div>
+        </div>
+        <div class="card-badge purple">Professional · Operations</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">STG Visualizer — Ops & Sales Tool</div>
+        <div class="card-desc">
+          Visualizes Sale Type Grades over time with source priority configuration.
+          Built for operations teams to understand algorithm performance across delivery, takeaway, and dine-in.
+        </div>
+        <div class="card-impact">📊 Time-series grade analysis with CSV export — turns raw DB data into actionable ops insight.</div>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Data Viz</span>
+            <span class="tag">SQL</span>
+            <span class="tag">GitHub Pages</span>
+          </div>
+          <a href="https://fistook22.github.io/STG-Visualizer/" target="_blank" class="live-btn">
+            <span class="live-dot"></span> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Parking Management -->
+    <div class="project-card">
+      <div class="card-preview">
+        <div class="card-preview-fallback theme-green">
+          <div class="fallback-icon">🅿️</div>
+          <div class="fallback-label" style="color:#6ee7b7;">Parking Management App</div>
+          <div style="font-size:11px;color:#3a7a5a;margin-top:4px;">Built solo — no engineering support</div>
+        </div>
+        <div class="card-badge green">Independent</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Parking Management App</div>
+        <div class="card-desc">
+          Spotted a real operational parking problem in a building, designed the solution,
+          and built it end-to-end. Multi-floor view, occupied/available status, double-parking
+          pairs, real-time updates.
+        </div>
+        <div class="card-impact">🔧 Problem → design → working product. Solo. Zero engineering support.</div>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Full-Stack</span>
+            <span class="tag">Ops Design</span>
+            <span class="tag">GitHub Pages</span>
+          </div>
+          <a href="https://fistook22.github.io/parking-management/" target="_blank" class="live-btn">
+            <span class="live-dot"></span> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. DRAM -->
+    <div class="project-card">
+      <div class="card-preview">
+        <div class="card-preview-fallback theme-red">
+          <div class="fallback-icon">🥃</div>
+          <div class="fallback-label" style="color:#fca5a5;">DRAM — Whisky App</div>
+          <div style="font-size:11px;color:#9a5050;margin-top:4px;">Python · Flask · pythonanywhere</div>
+        </div>
+        <div class="card-badge gold">Independent</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">DRAM — Whisky Tasting App</div>
+        <div class="card-desc">
+          Full-stack whisky tasting tracker with bottle catalog, tasting notes, and data visualization.
+          Built independently with Python (Flask), JavaScript, and SQL. Deployed and live.
+        </div>
+        <div class="card-impact">📦 Started as a learning project. Shipped and running in production.</div>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">SQL</span>
+          </div>
+          <a href="https://fistook22.pythonanywhere.com/" target="_blank" class="live-btn">
+            <span class="live-dot"></span> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Looper -->
+    <div class="project-card">
+      <div class="card-preview">
+        <div class="card-preview-fallback theme-teal">
+          <div class="fallback-icon">🎵</div>
+          <div class="fallback-label" style="color:#67e8f9;">Looper</div>
+          <div style="font-size:11px;color:#3a7a88;margin-top:4px;">Deployed on Netlify</div>
+        </div>
+        <div class="card-badge" style="color:#67e8f9;border-color:rgba(103,232,249,0.3);">Independent</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Looper</div>
+        <div class="card-desc">
+          An independent web project built and deployed on Netlify.
+          Another example of taking an idea from zero to shipped — independently.
+        </div>
+        <div class="card-impact">🚀 Live and deployed — another full-cycle solo build.</div>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Netlify</span>
+            <span class="tag">Web App</span>
+          </div>
+          <a href="https://musical-zuccutto-93c925.netlify.app/" target="_blank" class="live-btn">
+            <span class="live-dot"></span> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <div class="section-eyebrow">Background</div>
+    <div class="section-title">Who I am</div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I bring the rigor of enterprise technology into environments that haven't fully adopted it yet —
+        <strong>and I make it stick.</strong>
+      </p>
+      <p>
+        My career has been a deliberate combination of building things with my hands and building systems at scale.
+        I've led production teams in a distillery, founded a restaurant from scratch in Ecuador,
+        and shipped AI products used across 40+ markets — all before I turned 35.
+      </p>
+      <p>
+        What connects all of it: <strong>I treat every process as a product</strong>.
+        If it's manual, I ask why. If the data says something, I listen.
+        If the team isn't using the tool, the tool is broken — not the team.
+      </p>
+      <p>
+        At Zoglowek, I'd bring the same lens: find where time and money are leaking,
+        design something better, and ship it with the people already in the building.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">🚀</div>
+        <div class="timeline-content">
+          <div class="timeline-role">Product Manager — AI & Enterprise</div>
+          <div class="timeline-company">Byte K&F · Dragontail Systems · Yum! Brands</div>
+          <div class="timeline-date">2023 – Present</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">🎓</div>
+        <div class="timeline-content">
+          <div class="timeline-role">AI Product Leader Diploma</div>
+          <div class="timeline-company">Product Experts</div>
+          <div class="timeline-date">Dec 2025 – Mar 2026</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">🥃</div>
+        <div class="timeline-content">
+          <div class="timeline-role">Production Manager</div>
+          <div class="timeline-company">The Milk & Honey Distillery</div>
+          <div class="timeline-date">2020 – 2022</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">💻</div>
+        <div class="timeline-content">
+          <div class="timeline-role">Full Stack Web Development</div>
+          <div class="timeline-company">Developers Institute — Python & JavaScript</div>
+          <div class="timeline-date">2021 – 2022</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">🌎</div>
+        <div class="timeline-content">
+          <div class="timeline-role">Business Owner — Casa Fistook</div>
+          <div class="timeline-company">Shakshuka Bar, Montanita, Ecuador</div>
+          <div class="timeline-date">2016 – 2018</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">🪖</div>
+        <div class="timeline-content">
+          <div class="timeline-role">Platoon Commander</div>
+          <div class="timeline-company">Sayeret Nahal, Nahal Brigade, IDF</div>
+          <div class="timeline-date">2010 – 2013</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Capabilities</div>
+    <div class="section-title">Skills & Stack</div>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title">AI & LLM</div>
+      <div class="skill-list">
+        <span class="skill-pill">LLM Product Development</span>
+        <span class="skill-pill">Prompt Engineering</span>
+        <span class="skill-pill">RAG</span>
+        <span class="skill-pill">MCPs</span>
+        <span class="skill-pill">Agent Architecture</span>
+        <span class="skill-pill">Evals & Benchmarking</span>
+        <span class="skill-pill">AI Workflow Automation</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Technical</div>
+      <div class="skill-list">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">REST APIs</span>
+        <span class="skill-pill">Bash</span>
+        <span class="skill-pill">Pandas & NumPy</span>
+        <span class="skill-pill">Selenium & Puppeteer</span>
+        <span class="skill-pill">HTML / CSS</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Product & Operations</div>
+      <div class="skill-list">
+        <span class="skill-pill">PRDs & Roadmapping</span>
+        <span class="skill-pill">RICE / LNO</span>
+        <span class="skill-pill">OKRs & KPIs</span>
+        <span class="skill-pill">Stakeholder Management</span>
+        <span class="skill-pill">Process Design</span>
+        <span class="skill-pill">Beta Programs</span>
+        <span class="skill-pill">Jira & Monday.com</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <h2>Let's talk.</h2>
+  <p>Open to the right conversation — especially one that starts with "how do we actually do this?"</p>
+  <div class="contact-links">
+    <a href="mailto:shaiamir22@gmail.com" class="btn btn-primary">shaiamir22@gmail.com</a>
+    <a href="https://linkedin.com/in/shaiamir" class="btn btn-ghost" target="_blank">LinkedIn</a>
+    <a href="shai_amir_cv_zoglowek.html" class="btn btn-ghost">Download CV</a>
+  </div>
+</div>
+
+<footer>
+  <div>Shai Amir &nbsp;·&nbsp; Tel Aviv, Israel &nbsp;·&nbsp; +972-54-4221720</div>
+  <div>Hebrew · English · Spanish</div>
+</footer>
+
+</body>
+</html>
